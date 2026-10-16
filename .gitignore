@@ -28,3 +28,8 @@ build/WebGL Build.loader.js
 build/WebGL Build.framework.js
 build/WebGL Build.data
 build/WebGL Build.wasm
+
+# Contest submission: Python caches from mine/engine tests
+__pycache__/
+*.pyc
+.pytest_cache/

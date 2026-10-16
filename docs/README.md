@@ -2,7 +2,7 @@
 
 *Русский: короткая сводка внизу.*
 
-**New here? You don't need this folder.** To run OpenEgiz on a laptop, follow the [Quick start in the root README](../OPENEGIZ.md#quick-start-docker-compose): `make up`, then `make example-mine`. To build your own twins, start from the [Example Mine](../examples/mine/).
+**New here? You don't need this folder.** To run OpenEgiz on a laptop, follow the [Quick start in the root README](../README.md#quick-start-docker-compose): `make up`, then `make example-mine`. To build your own twins, start from the [Example Mine](../examples/mine/).
 
 This folder is for the **Helm path** (a long-running k3s server, our ARM64 lab host) and for the engineering history behind the platform.
 
@@ -31,4 +31,4 @@ Why things are the way they are. Read them when you change the matching part of 
 
 ---
 
-**По-русски.** Чтобы запустить OpenEgiz на ноутбуке, эта папка не нужна: см. [быстрый старт в README](../OPENEGIZ.ru.md#быстрый-старт-docker-compose) и [Пример рудника](../examples/mine/README.ru.md). Здесь лежат гайды по Helm на k3s ([guides/](guides/README.md)), инженерные заметки о том, почему платформа устроена так, и сырой журнал первой установки ([install-log.md](install-log.md)).
+**По-русски.** Чтобы запустить OpenEgiz на ноутбуке, эта папка не нужна: см. [быстрый старт в README](../README.ru.md#быстрый-старт-docker-compose) и [Пример рудника](../examples/mine/README.ru.md). Здесь лежат гайды по Helm на k3s ([guides/](guides/README.md)), инженерные заметки о том, почему платформа устроена так, и сырой журнал первой установки ([install-log.md](install-log.md)).

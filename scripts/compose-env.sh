@@ -43,6 +43,8 @@ EXTENDED_API_PORT=8085
 UNITY_PORT=8090
 INFLUXDB_PORT=8086
 MQTT_PORT=1883
+# Kyzyl-Tas mine: 3D UI (deploy/compose/mine.yml / mine-ui).
+MINE_UI_PORT=8000
 
 # --- credentials (users: grafana admin, ditto ditto/devops, influxdb admin) -
 GRAFANA_ADMIN_PASSWORD=$(rand)

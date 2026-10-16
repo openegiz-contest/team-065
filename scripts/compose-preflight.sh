@@ -9,11 +9,17 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # shellcheck disable=SC1091
 set -a; . "$ROOT/deploy/compose/.env"; set +a
+: "${MINE_UI_PORT:=8000}"  # safety net for a stale .env from before this var existed
 
 die() { printf '\033[31mERROR:\033[0m %s\n' "$1" >&2; exit 1; }
 warn() { printf '\033[33mWARNING:\033[0m %s\n' "$1" >&2; }
 
-docker info >/dev/null 2>&1 || die "Docker is not running (start Docker Desktop, or the docker service on Linux)."
+if ! docker_info="$(docker info 2>&1)"; then
+  if printf '%s' "$docker_info" | grep -qi "permission denied"; then
+    die "This user may not use Docker. Add it to the docker group (sudo usermod -aG docker \$USER, then log in again) or run the commands with sudo."
+  fi
+  die "Docker is not running (start Docker Desktop, or the docker service on Linux)."
+fi
 
 compose_version="$(docker compose version --short 2>/dev/null || true)"
 [ -n "$compose_version" ] || die "Docker Compose v2 is required ('docker compose', not 'docker-compose')."
@@ -51,7 +57,7 @@ port_busy() {
 ours="$(docker compose -f "$ROOT/deploy/compose/docker-compose.yml" ps -q 2>/dev/null || true)"
 if [ -z "$ours" ]; then
   busy=()
-  for var in GRAFANA_PORT DITTO_PORT EXTENDED_API_PORT UNITY_PORT INFLUXDB_PORT MQTT_PORT; do
+  for var in GRAFANA_PORT DITTO_PORT EXTENDED_API_PORT UNITY_PORT INFLUXDB_PORT MQTT_PORT MINE_UI_PORT; do
     port="${!var}"
     if port_busy "$port"; then
       busy+=("$var=$port")

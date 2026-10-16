@@ -1,0 +1,63 @@
+# Same-origin proxy for the Kyzyl-Tas Mine 3D UI.
+#
+# Why this exists: ditto-nginx
+# requires HTTP Basic auth, and a browser's EventSource/WebSocket cannot send
+# an Authorization header; InfluxDB sends no CORS headers at all. So the
+# browser only ever talks to this same origin, and this proxy injects the
+# platform credentials server-side. The env vars below come from
+# deploy/compose/mine.yml (themselves from the platform's generated .env) via
+# nginx's own 20-envsubst-on-templates.sh entrypoint script (official
+# nginx:1.25-alpine image) - plain nginx vars like $uri/$host are untouched
+# because envsubst only replaces names listed in NGINX_ENVSUBST_FILTER /
+# matching actual environment variable names, and we only set the two below.
+server {
+  listen 80;
+  server_name _;
+
+  root /usr/share/nginx/html;
+  index index.html;
+
+  # Resolve the platform containers at request time through Docker's DNS, so a
+  # recreated ditto-nginx or influxdb container does not leave stale addresses.
+  resolver 127.0.0.11 valid=10s ipv6=off;
+  set $ditto_upstream http://ditto-nginx:80;
+  set $influx_upstream http://influxdb:8086;
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+
+  # Ditto REST + search + SSE (GET .../things?...&Accept: text/event-stream).
+  # Same-origin, credentials injected here - the browser sends none.
+  location /ditto/ {
+    rewrite ^/ditto/(.*)$ /$1 break;
+    proxy_pass $ditto_upstream;
+    proxy_set_header Authorization "Basic ${DITTO_BASIC_AUTH}";
+    proxy_set_header Host $host;
+    proxy_http_version 1.1;
+    proxy_set_header Connection "";
+    proxy_buffering off;
+    proxy_cache off;
+    proxy_read_timeout 1h;
+  }
+
+  # Ditto WebSocket (ws://<host>/ditto-ws/2).
+  location /ditto-ws/ {
+    rewrite ^/ditto-ws/(.*)$ /ws/$1 break;
+    proxy_pass $ditto_upstream;
+    proxy_set_header Authorization "Basic ${DITTO_BASIC_AUTH}";
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 1d;
+  }
+
+  # InfluxDB history/KPI queries (Flux), POST only. Token injected here.
+  location = /influx/query {
+    limit_except POST { deny all; }
+    rewrite ^ /api/v2/query?org=opentwins? break;
+    proxy_pass $influx_upstream;
+    proxy_set_header Authorization "Token ${INFLUXDB_TOKEN}";
+    proxy_set_header Content-Type "application/vnd.flux";
+  }
+}

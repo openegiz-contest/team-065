@@ -4,7 +4,7 @@
   <img src="docs/img/logo-readme.svg" alt="OpenEgiz logo" width="420">
 </p>
 
-*Русская версия: [OPENEGIZ.ru.md](OPENEGIZ.ru.md)*
+*Русская версия: [README.ru.md](README.ru.md). This is the OpenEgiz platform guide; the contest submission starts at [README.md](README.md).*
 
 An open-source digital twin platform for industry: live twin state (Eclipse Ditto), telemetry (MQTT → Telegraf → InfluxDB), dashboards and a twin management UI (Grafana), 3D visualization (Unity WebGL).
 

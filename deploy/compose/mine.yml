@@ -1,0 +1,84 @@
+# Kyzyl-Tas, an open-pit copper-gold mine built on top of
+# OpenEgiz. These services are unconditionally part of the stack (see
+# Makefile: COMPOSE always loads this file) - `make up` alone starts the
+# platform and the mine together, as README.md describes.
+#
+# Paths below are relative to this file's directory (deploy/compose/, the
+# project directory set by the first -f file).
+#
+# Twin catalogue, simulation engine and 3D interface live in
+# ../../mine/{setup,engine,ui}.
+
+services:
+  mine-setup:
+    build:
+      context: ../../mine/setup
+    image: kyzyltas/mine-setup:local
+    pull_policy: never
+    restart: "no"
+    environment:
+      DITTO_URL: "http://ditto-nginx:80"
+      DITTO_USER: "ditto"
+      DITTO_PASSWORD: "${DITTO_PASSWORD}"
+    depends_on:
+      init:
+        condition: service_completed_successfully
+
+  mine-engine:
+    build:
+      context: ../../mine/engine
+    image: kyzyltas/mine-engine:local
+    pull_policy: never
+    restart: unless-stopped
+    mem_limit: 512m
+    environment:
+      MQTT_HOST: "mosquitto"
+      MQTT_PORT: "1883"
+      DITTO_URL: "http://ditto-nginx:80"
+      DITTO_USER: "ditto"
+      DITTO_PASSWORD: "${DITTO_PASSWORD}"
+      SEED: "3"
+      SPEEDUP: "60"
+    depends_on:
+      mine-setup:
+        condition: service_completed_successfully
+
+  mine-ui:
+    build:
+      context: ../../mine/ui
+    image: kyzyltas/mine-ui:local
+    pull_policy: never
+    restart: unless-stopped
+    mem_limit: 128m
+    environment:
+      DITTO_BASIC_AUTH: "${DITTO_BASIC_AUTH}"
+      INFLUXDB_TOKEN: "${INFLUXDB_TOKEN}"
+    volumes:
+      # Our own nginx.conf.template (same-origin proxy injecting credentials
+      # server-side) replaces the image's default; see nginx's own
+      # 20-envsubst-on-templates.sh entrypoint script, already in the base
+      # nginx:1.25-alpine image used elsewhere in this stack.
+      - ./mine-ui/nginx.conf.template:/etc/nginx/templates/default.conf.template:ro
+    ports:
+      - "${OPENEGIZ_BIND:-127.0.0.1}:${MINE_UI_PORT:-8000}:80"
+    depends_on:
+      ditto-nginx:
+        condition: service_healthy
+      influxdb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+
+  # Grafana belongs to the platform (docker-compose.yml); Compose merges these
+  # settings into it. Read-only anonymous access lets anyone on this machine open
+  # the mine dashboard without the generated admin password (ports are bound to
+  # 127.0.0.1 only); the OpenEgiz Twins/Types pages still need the admin login.
+  grafana:
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Viewer"
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: "/var/lib/grafana/dashboards/kyzyl-tas.json"

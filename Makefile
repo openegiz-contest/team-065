@@ -4,18 +4,23 @@
 # Docker Compose deployment (laptops, CI, contest judges): deploy/compose/
 # ---------------------------------------------------------------------------
 COMPOSE_BASE := docker compose -f deploy/compose/docker-compose.yml
-# Once `make example-mine` has run, every compose command also loads the mine
-# overlay, so `down` stops its simulator and `up` keeps its Grafana dashboard.
-# `make clean` forgets it.
+# Kyzyl-Tas mine (twins + simulation engine + 3D UI) is
+# unconditionally part of the stack, in deploy/compose/mine.yml. `make up`
+# alone starts platform + our mine; no separate step, no marker file for it.
+OUR_MINE := deploy/compose/mine.yml
+# Once `make example-mine` has run, every compose command also loads the
+# reference example overlay too. Kyzyl-Tas does not use it, but the target
+# is left working. `make clean` forgets it.
 MINE_MARKER  := deploy/compose/.example-mine
 MINE_COMPOSE := examples/mine/compose.yml
-COMPOSE := $(COMPOSE_BASE)$(if $(wildcard $(MINE_MARKER)), -f $(MINE_COMPOSE))
+COMPOSE := $(COMPOSE_BASE) -f $(OUR_MINE)$(if $(wildcard $(MINE_MARKER)), -f $(MINE_COMPOSE))
 
 ## Start the whole platform with Docker Compose (first run: generates credentials)
 up:
 	@bash scripts/compose-env.sh
 	@bash scripts/compose-preflight.sh
-	$(COMPOSE) up -d --build --wait --wait-timeout 900
+	@# Retried: image pulls from Docker Hub fail now and then for transient reasons.
+	@bash scripts/compose-retry.sh $(COMPOSE) up -d --build --wait --wait-timeout 900
 	@# `--wait` does not wait for one-shot jobs to finish: a running init counts
 	@# as up. Wait for it to exit, then check how.
 	@test "$$(docker wait $$($(COMPOSE) ps -a -q init))" = 0 || { \

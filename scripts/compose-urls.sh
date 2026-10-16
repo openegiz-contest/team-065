@@ -4,11 +4,13 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # shellcheck disable=SC1091
 set -a; . "$ROOT/deploy/compose/.env"; set +a
+: "${MINE_UI_PORT:=8000}"
 H="${OPENEGIZ_PUBLIC_HOST:-localhost}"
 cat <<TXT
 
 OpenEgiz is up.
 
+  Kyzyl-Tas Mine (3D)  http://$H:$MINE_UI_PORT        no login needed
   Grafana        http://$H:$GRAFANA_PORT        admin / $GRAFANA_ADMIN_PASSWORD
   Ditto API      http://$H:$DITTO_PORT/api/2    ditto / $DITTO_PASSWORD   (devops / $DITTO_DEVOPS_PASSWORD)
   Extended API   http://$H:$EXTENDED_API_PORT

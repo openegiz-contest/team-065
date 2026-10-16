@@ -1,0 +1,5435 @@
+[
+  {
+    "thingId": "kz.kyzyltas.mine:Mine",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Mine:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {},
+      "name": "Mine",
+      "description": "Type definition for Mine instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Mine",
+      "instances": 1
+    },
+    "features": {
+      "cu_output_total_t": {
+        "properties": {
+          "value": 0,
+          "unit": "t"
+        }
+      },
+      "tonnes_ore_total": {
+        "properties": {
+          "value": 0,
+          "unit": "t"
+        }
+      },
+      "tonnes_waste_total": {
+        "properties": {
+          "value": 0,
+          "unit": "t"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Pit",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Pit:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Mine": 1
+      },
+      "name": "Pit",
+      "description": "Type definition for Pit instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Pit",
+      "instances": 1
+    },
+    "features": {
+      "ore_delivered_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "strip_ratio": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Bench",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Bench:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Pit": 10
+      },
+      "name": "Bench",
+      "description": "Type definition for Bench instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Bench",
+      "instances": 10
+    },
+    "features": {
+      "grade_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "role": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:SlopeRadar",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:SlopeRadar:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Pit": 2
+      },
+      "name": "SlopeRadar",
+      "description": "Type definition for SlopeRadar instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "SlopeRadar",
+      "instances": 2
+    },
+    "features": {
+      "tarp_level": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "velocity_mmday": {
+        "properties": {
+          "value": 0,
+          "unit": "mm/day"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Dispatch",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Dispatch:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Mine": 1
+      },
+      "name": "Dispatch",
+      "description": "Type definition for Dispatch instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Dispatch",
+      "instances": 1
+    },
+    "features": {
+      "dispatch_policy_active": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "match_factor_ore": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "trucks_queued_total": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:HaulTruck",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Dispatch": 14
+      },
+      "name": "HaulTruck",
+      "description": "Type definition for HaulTruck instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "HaulTruck",
+      "instances": 14
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 0,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 0,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 0,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 0,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 0,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Shovel",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Shovel:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Dispatch": 4
+      },
+      "name": "Shovel",
+      "description": "Type definition for Shovel instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Shovel",
+      "instances": 4
+    },
+    "features": {
+      "dig_rate_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "face_grade_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "queue_length": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Drill",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Drill:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Dispatch": 2
+      },
+      "name": "Drill",
+      "description": "Type definition for Drill instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Drill",
+      "instances": 2
+    },
+    "features": {
+      "drill_hours_factor": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "penetration_rate_mh": {
+        "properties": {
+          "value": 0,
+          "unit": "m/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Plant",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Plant:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Mine": 1
+      },
+      "name": "Plant",
+      "description": "Type definition for Plant instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Plant",
+      "instances": 1
+    },
+    "features": {
+      "plant_availability": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "plant_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Crusher",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Crusher:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Plant": 1
+      },
+      "name": "Crusher",
+      "description": "Type definition for Crusher instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Crusher",
+      "instances": 1
+    },
+    "features": {
+      "availability": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "feed_grade_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "throughput_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Conveyor",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Conveyor:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Plant": 2
+      },
+      "name": "Conveyor",
+      "description": "Type definition for Conveyor instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Conveyor",
+      "instances": 2
+    },
+    "features": {
+      "state": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "throughput_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Mill",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Mill:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Plant": 3
+      },
+      "name": "Mill",
+      "description": "Type definition for Mill instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Mill",
+      "instances": 3
+    },
+    "features": {
+      "health_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "p80_um": {
+        "properties": {
+          "value": 0,
+          "unit": "um"
+        }
+      },
+      "power_kw": {
+        "properties": {
+          "value": 0,
+          "unit": "kW"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "throughput_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "x80_feed_mm": {
+        "properties": {
+          "value": 0,
+          "unit": "mm"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:FlotationCell",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:FlotationCell:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Plant": 1
+      },
+      "name": "FlotationCell",
+      "description": "Type definition for FlotationCell instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "FlotationCell",
+      "instances": 1
+    },
+    "features": {
+      "au_recovery_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "conc_grade_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "cu_recovery_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "feed_grade_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "feed_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Tailings",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Tailings:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Plant": 1
+      },
+      "name": "Tailings",
+      "description": "Type definition for Tailings instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Tailings",
+      "instances": 1
+    },
+    "features": {
+      "state": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "tails_grade_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "throughput_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Stockpile",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Stockpile:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Plant": 4
+      },
+      "name": "Stockpile",
+      "description": "Type definition for Stockpile instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Stockpile",
+      "instances": 4
+    },
+    "features": {
+      "fill_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "grade_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "mass_t": {
+        "properties": {
+          "value": 0,
+          "unit": "t"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:FanStation",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:FanStation:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Plant": 1,
+        "Pit": 1
+      },
+      "name": "FanStation",
+      "description": "Type definition for FanStation instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "FanStation",
+      "instances": 2
+    },
+    "features": {
+      "speed_factor": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:RoadSegment",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Mine": 12
+      },
+      "name": "RoadSegment",
+      "description": "Type definition for RoadSegment instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "RoadSegment",
+      "instances": 12
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:Substation",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Substation:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Mine": 1
+      },
+      "name": "Substation",
+      "description": "Type definition for Substation instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "Substation",
+      "instances": 1
+    },
+    "features": {
+      "capacity_kw": {
+        "properties": {
+          "value": 0,
+          "unit": "kW"
+        }
+      },
+      "grid_co2_factor": {
+        "properties": {
+          "value": 0,
+          "unit": "kg/kWh"
+        }
+      },
+      "load_kw": {
+        "properties": {
+          "value": 0,
+          "unit": "kW"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:WeatherStation",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:WeatherStation:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Mine": 1
+      },
+      "name": "WeatherStation",
+      "description": "Type definition for WeatherStation instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "WeatherStation",
+      "instances": 1
+    },
+    "features": {
+      "condition": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "temp_c": {
+        "properties": {
+          "value": 0,
+          "unit": "C"
+        }
+      },
+      "visibility_m": {
+        "properties": {
+          "value": 0,
+          "unit": "m"
+        }
+      },
+      "wind_ms": {
+        "properties": {
+          "value": 0,
+          "unit": "m/s"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:ScenarioControl",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:ScenarioControl:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Mine": 1
+      },
+      "name": "ScenarioControl",
+      "description": "Type definition for ScenarioControl instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "ScenarioControl",
+      "instances": 1
+    },
+    "features": {
+      "active_scenario": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "run_id": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "truck_count_delta": {
+        "properties": {
+          "value": 0,
+          "unit": "trucks"
+        }
+      },
+      "shovel_down_id": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "crusher_availability": {
+        "properties": {
+          "value": 0,
+          "unit": "ratio"
+        }
+      },
+      "blast_powder_factor": {
+        "properties": {
+          "value": 0,
+          "unit": "ratio"
+        }
+      },
+      "fan_speed_factor": {
+        "properties": {
+          "value": 0,
+          "unit": "ratio"
+        }
+      },
+      "dispatch_policy": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "ambient_temp_c": {
+        "properties": {
+          "value": 0,
+          "unit": "C"
+        }
+      },
+      "ore_bwi_kwht": {
+        "properties": {
+          "value": 0,
+          "unit": "kWh/t"
+        }
+      },
+      "mill_power_factor": {
+        "properties": {
+          "value": 0,
+          "unit": "ratio"
+        }
+      },
+      "road_rr_bonus_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "cu_price_usd_t": {
+        "properties": {
+          "value": 0,
+          "unit": "USD/t"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:KPI",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:KPI:1.0.0",
+    "attributes": {
+      "_isType": true,
+      "_parents": {
+        "Mine": 1
+      },
+      "name": "KPI",
+      "description": "Type definition for KPI instances in the Kyzyl-Tas mine twin catalogue.",
+      "class": "KPI",
+      "instances": 1
+    },
+    "features": {
+      "active_scenario": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "baseline_au_ozph": {
+        "properties": {
+          "value": 0,
+          "unit": "oz/h"
+        }
+      },
+      "baseline_buffer_h": {
+        "properties": {
+          "value": 0,
+          "unit": "h"
+        }
+      },
+      "baseline_co2_t_h": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "baseline_cu_mined_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "baseline_cu_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "baseline_energy_kwh_h": {
+        "properties": {
+          "value": 0,
+          "unit": "kWh/h"
+        }
+      },
+      "baseline_fleet_avail_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "baseline_fuel_l_h": {
+        "properties": {
+          "value": 0,
+          "unit": "L/h"
+        }
+      },
+      "baseline_haul_cycle_min": {
+        "properties": {
+          "value": 0,
+          "unit": "min"
+        }
+      },
+      "baseline_margin_usd_h": {
+        "properties": {
+          "value": 0,
+          "unit": "$/h"
+        }
+      },
+      "baseline_mill_kwh_t": {
+        "properties": {
+          "value": 0,
+          "unit": "kWh/t"
+        }
+      },
+      "baseline_mined_grade_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "baseline_moved_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "baseline_nsr_usd_h": {
+        "properties": {
+          "value": 0,
+          "unit": "$/h"
+        }
+      },
+      "baseline_ore_mined_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "baseline_planned_repairs": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "baseline_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "baseline_unplanned_failures": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "co2_total_t": {
+        "properties": {
+          "value": 0,
+          "unit": "t"
+        }
+      },
+      "cu_output_total_t": {
+        "properties": {
+          "value": 0,
+          "unit": "t"
+        }
+      },
+      "current_au_ozph": {
+        "properties": {
+          "value": 0,
+          "unit": "oz/h"
+        }
+      },
+      "current_buffer_h": {
+        "properties": {
+          "value": 0,
+          "unit": "h"
+        }
+      },
+      "current_co2_t_h": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "current_cu_mined_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "current_cu_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "current_energy_kwh_h": {
+        "properties": {
+          "value": 0,
+          "unit": "kWh/h"
+        }
+      },
+      "current_fleet_avail_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "current_fuel_l_h": {
+        "properties": {
+          "value": 0,
+          "unit": "L/h"
+        }
+      },
+      "current_haul_cycle_min": {
+        "properties": {
+          "value": 0,
+          "unit": "min"
+        }
+      },
+      "current_margin_usd_h": {
+        "properties": {
+          "value": 0,
+          "unit": "$/h"
+        }
+      },
+      "current_mill_kwh_t": {
+        "properties": {
+          "value": 0,
+          "unit": "kWh/t"
+        }
+      },
+      "current_mined_grade_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "current_moved_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "current_nsr_usd_h": {
+        "properties": {
+          "value": 0,
+          "unit": "$/h"
+        }
+      },
+      "current_ore_mined_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "current_planned_repairs": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "current_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "current_unplanned_failures": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "delta_au_ozph_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_buffer_h_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_co2_t_h_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_cu_mined_tph_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_cu_tph_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_energy_kwh_h_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_fleet_avail_pct_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_fuel_l_h_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_haul_cycle_min_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_margin_usd_h_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_mill_kwh_t_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_mined_grade_pct_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_moved_tph_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_nsr_usd_h_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_ore_mined_tph_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "delta_tph_pct": {
+        "properties": {
+          "value": 0,
+          "unit": "%"
+        }
+      },
+      "event_seq": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "gc_reclaim_tph": {
+        "properties": {
+          "value": 0,
+          "unit": "t/h"
+        }
+      },
+      "idSimulationRun": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "last_event": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "road_pm10_kg_h": {
+        "properties": {
+          "value": 0,
+          "unit": "kg/h"
+        }
+      },
+      "run_id": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "sim_time_h": {
+        "properties": {
+          "value": 0,
+          "unit": "h"
+        }
+      },
+      "speedup": {
+        "properties": {
+          "value": 0,
+          "unit": "x"
+        }
+      },
+      "trucks_operating": {
+        "properties": {
+          "value": 0,
+          "unit": "trucks"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:mine",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Mine:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "name": "Kyzyl-Tas Mine",
+      "description": "Fictional open-pit Cu-Au(-Mo) mine, parametrised from public Bozshakol/Aktogay (KAZ Minerals) data. Not a real company.",
+      "class": "Mine",
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    "features": {
+      "cu_output_total_t": {
+        "properties": {
+          "value": 13.85,
+          "unit": "t"
+        }
+      },
+      "tonnes_ore_total": {
+        "properties": {
+          "value": 3084.0,
+          "unit": "t"
+        }
+      },
+      "tonnes_waste_total": {
+        "properties": {
+          "value": 1088.0,
+          "unit": "t"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:pit",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Pit:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Main Pit",
+      "description": "Single open pit, twin geometry 3.0 km x 1.8 km, bench height 15 m, ramp grade 8% design / 10% max.",
+      "class": "Pit",
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "length_m": 3000,
+      "width_m": 1800,
+      "bench_height_m": 15,
+      "ramp_grade_design_pct": 8,
+      "ramp_grade_max_pct": 10
+    },
+    "features": {
+      "ore_delivered_tph": {
+        "properties": {
+          "value": 4186.0,
+          "unit": "t/h"
+        }
+      },
+      "strip_ratio": {
+        "properties": {
+          "value": 0.35,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:dispatch",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Dispatch:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Fleet Dispatch",
+      "description": "Logical fleet-management node (modelled on KAZ Minerals' Leica/Hexagon Jigsaw dispatch at Bozshakol/Aktogay): groups haul trucks, shovels and drills, and carries fleet-level KPIs.",
+      "class": "Dispatch",
+      "geometry": {
+        "x": 1600,
+        "y": 0,
+        "z": -300
+      }
+    },
+    "features": {
+      "dispatch_policy_active": {
+        "properties": {
+          "value": "dynamic",
+          "unit": ""
+        }
+      },
+      "match_factor_ore": {
+        "properties": {
+          "value": 0.5,
+          "unit": ""
+        }
+      },
+      "trucks_queued_total": {
+        "properties": {
+          "value": 1,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:plant",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Plant:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Concentrator Plant",
+      "description": "Groups the crusher, conveyors, SAG/ball mills, flotation bank, tailings facility and process stockpiles; carries plant-level KPIs.",
+      "class": "Plant",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": 0
+      }
+    },
+    "features": {
+      "plant_availability": {
+        "properties": {
+          "value": 1.0,
+          "unit": ""
+        }
+      },
+      "plant_tph": {
+        "properties": {
+          "value": 3425.0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:substation-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Substation:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Main Substation",
+      "description": "220 kV intake, sized on Bozshakol's reported 214 MW project power requirement fed from Ekibastuz GRES-1.",
+      "class": "Substation",
+      "geometry": {
+        "x": 1600,
+        "y": 0,
+        "z": -200
+      },
+      "capacity_mw": 214,
+      "voltage_kv": 220,
+      "source": "Ekibastuz GRES-1 (220 kV)",
+      "feeds": [
+        "kz.kyzyltas.mine:crusher-01",
+        "kz.kyzyltas.mine:conveyor-01",
+        "kz.kyzyltas.mine:conveyor-02",
+        "kz.kyzyltas.mine:mill-sag-01",
+        "kz.kyzyltas.mine:mill-ball-01",
+        "kz.kyzyltas.mine:mill-ball-02"
+      ]
+    },
+    "features": {
+      "capacity_kw": {
+        "properties": {
+          "value": 214000.0,
+          "unit": "kW"
+        }
+      },
+      "grid_co2_factor": {
+        "properties": {
+          "value": 0.8,
+          "unit": "kg/kWh"
+        }
+      },
+      "load_kw": {
+        "properties": {
+          "value": 76390.0,
+          "unit": "kW"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:weather-station-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:WeatherStation:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Site Weather Station",
+      "description": "Kazakh steppe climate station near the pit rim; coordinates approximate Bozshakol (50.2N, 74.4E).",
+      "class": "WeatherStation",
+      "geometry": {
+        "x": 0,
+        "y": 20,
+        "z": 900
+      },
+      "lat": 50.2,
+      "lon": 74.4
+    },
+    "features": {
+      "condition": {
+        "properties": {
+          "value": "clear",
+          "unit": ""
+        }
+      },
+      "temp_c": {
+        "properties": {
+          "value": 15.0,
+          "unit": "C"
+        }
+      },
+      "visibility_m": {
+        "properties": {
+          "value": 2000.0,
+          "unit": "m"
+        }
+      },
+      "wind_ms": {
+        "properties": {
+          "value": 4.0,
+          "unit": "m/s"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:scenario",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:ScenarioControl:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Scenario Control",
+      "description": "Shared what-if control twin. Written by the UI (PATCH), read and reset by the simulation engine. Undo writes every field back to its default.",
+      "class": "ScenarioControl"
+    },
+    "features": {
+      "active_scenario": {
+        "properties": {
+          "value": "none",
+          "unit": ""
+        }
+      },
+      "run_id": {
+        "properties": {
+          "value": "baseline",
+          "unit": ""
+        }
+      },
+      "truck_count_delta": {
+        "properties": {
+          "value": 0,
+          "unit": "trucks"
+        }
+      },
+      "shovel_down_id": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "crusher_availability": {
+        "properties": {
+          "value": 1.0,
+          "unit": "ratio"
+        }
+      },
+      "blast_powder_factor": {
+        "properties": {
+          "value": 1.0,
+          "unit": "ratio"
+        }
+      },
+      "fan_speed_factor": {
+        "properties": {
+          "value": 1.0,
+          "unit": "ratio"
+        }
+      },
+      "dispatch_policy": {
+        "properties": {
+          "value": "dynamic",
+          "unit": ""
+        }
+      },
+      "ambient_temp_c": {
+        "properties": {
+          "value": 15.0,
+          "unit": "C"
+        }
+      },
+      "ore_bwi_kwht": {
+        "properties": {
+          "value": 14.0,
+          "unit": "kWh/t"
+        }
+      },
+      "mill_power_factor": {
+        "properties": {
+          "value": 1.0,
+          "unit": "ratio"
+        }
+      },
+      "road_rr_bonus_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "cu_price_usd_t": {
+        "properties": {
+          "value": 14500.0,
+          "unit": "USD/t"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:kpi",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:KPI:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Mine KPI Roll-up",
+      "description": "Mine-wide KPI snapshot per the revenue-per-hour model in 03_domain.md section 9.3 (base case: TPH 3600, f 0.50% Cu, R 80%, Cu $14,500/t, Au $4,300/oz).",
+      "class": "KPI"
+    },
+    "features": {
+      "active_scenario": {
+        "properties": {
+          "value": "none",
+          "unit": ""
+        }
+      },
+      "baseline_au_ozph": {
+        "properties": {
+          "value": 17.18,
+          "unit": "oz/h"
+        }
+      },
+      "baseline_buffer_h": {
+        "properties": {
+          "value": 8.4,
+          "unit": "h"
+        }
+      },
+      "baseline_co2_t_h": {
+        "properties": {
+          "value": 64.49,
+          "unit": "t/h"
+        }
+      },
+      "baseline_cu_mined_tph": {
+        "properties": {
+          "value": 10.73,
+          "unit": "t/h"
+        }
+      },
+      "baseline_cu_tph": {
+        "properties": {
+          "value": 13.86,
+          "unit": "t/h"
+        }
+      },
+      "baseline_energy_kwh_h": {
+        "properties": {
+          "value": 76390.0,
+          "unit": "kWh/h"
+        }
+      },
+      "baseline_fleet_avail_pct": {
+        "properties": {
+          "value": 100.0,
+          "unit": "%"
+        }
+      },
+      "baseline_fuel_l_h": {
+        "properties": {
+          "value": 1260.48,
+          "unit": "L/h"
+        }
+      },
+      "baseline_haul_cycle_min": {
+        "properties": {
+          "value": 22.47,
+          "unit": "min"
+        }
+      },
+      "baseline_margin_usd_h": {
+        "properties": {
+          "value": 206537.74,
+          "unit": "$/h"
+        }
+      },
+      "baseline_mill_kwh_t": {
+        "properties": {
+          "value": 21.02,
+          "unit": "kWh/t"
+        }
+      },
+      "baseline_mined_grade_pct": {
+        "properties": {
+          "value": 0.52,
+          "unit": "%"
+        }
+      },
+      "baseline_moved_tph": {
+        "properties": {
+          "value": 2768.14,
+          "unit": "t/h"
+        }
+      },
+      "baseline_nsr_usd_h": {
+        "properties": {
+          "value": 242125.4,
+          "unit": "$/h"
+        }
+      },
+      "baseline_ore_mined_tph": {
+        "properties": {
+          "value": 2083.07,
+          "unit": "t/h"
+        }
+      },
+      "baseline_planned_repairs": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "baseline_tph": {
+        "properties": {
+          "value": 3425.0,
+          "unit": "t/h"
+        }
+      },
+      "baseline_unplanned_failures": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "co2_total_t": {
+        "properties": {
+          "value": 63.3,
+          "unit": "t"
+        }
+      },
+      "cu_output_total_t": {
+        "properties": {
+          "value": 13.85,
+          "unit": "t"
+        }
+      },
+      "current_au_ozph": {
+        "properties": {
+          "value": 17.18,
+          "unit": "oz/h"
+        }
+      },
+      "current_buffer_h": {
+        "properties": {
+          "value": 8.4,
+          "unit": "h"
+        }
+      },
+      "current_co2_t_h": {
+        "properties": {
+          "value": 64.49,
+          "unit": "t/h"
+        }
+      },
+      "current_cu_mined_tph": {
+        "properties": {
+          "value": 10.73,
+          "unit": "t/h"
+        }
+      },
+      "current_cu_tph": {
+        "properties": {
+          "value": 13.86,
+          "unit": "t/h"
+        }
+      },
+      "current_energy_kwh_h": {
+        "properties": {
+          "value": 76390.0,
+          "unit": "kWh/h"
+        }
+      },
+      "current_fleet_avail_pct": {
+        "properties": {
+          "value": 100.0,
+          "unit": "%"
+        }
+      },
+      "current_fuel_l_h": {
+        "properties": {
+          "value": 1260.48,
+          "unit": "L/h"
+        }
+      },
+      "current_haul_cycle_min": {
+        "properties": {
+          "value": 22.47,
+          "unit": "min"
+        }
+      },
+      "current_margin_usd_h": {
+        "properties": {
+          "value": 206537.74,
+          "unit": "$/h"
+        }
+      },
+      "current_mill_kwh_t": {
+        "properties": {
+          "value": 21.02,
+          "unit": "kWh/t"
+        }
+      },
+      "current_mined_grade_pct": {
+        "properties": {
+          "value": 0.52,
+          "unit": "%"
+        }
+      },
+      "current_moved_tph": {
+        "properties": {
+          "value": 2768.14,
+          "unit": "t/h"
+        }
+      },
+      "current_nsr_usd_h": {
+        "properties": {
+          "value": 242125.4,
+          "unit": "$/h"
+        }
+      },
+      "current_ore_mined_tph": {
+        "properties": {
+          "value": 2083.07,
+          "unit": "t/h"
+        }
+      },
+      "current_planned_repairs": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "current_tph": {
+        "properties": {
+          "value": 3425.0,
+          "unit": "t/h"
+        }
+      },
+      "current_unplanned_failures": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "delta_au_ozph_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_buffer_h_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_co2_t_h_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_cu_mined_tph_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_cu_tph_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_energy_kwh_h_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_fleet_avail_pct_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_fuel_l_h_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_haul_cycle_min_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_margin_usd_h_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_mill_kwh_t_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_mined_grade_pct_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_moved_tph_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_nsr_usd_h_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_ore_mined_tph_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "delta_tph_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "event_seq": {
+        "properties": {
+          "value": 1,
+          "unit": ""
+        }
+      },
+      "gc_reclaim_tph": {
+        "properties": {
+          "value": 0.0,
+          "unit": "t/h"
+        }
+      },
+      "idSimulationRun": {
+        "properties": {
+          "value": "baseline",
+          "unit": ""
+        }
+      },
+      "last_event": {
+        "properties": {
+          "value": "[t=  0.62h] shovel-s4: unplanned failure (wear-out, missed by inspection), MTTR 5.7 h",
+          "unit": ""
+        }
+      },
+      "road_pm10_kg_h": {
+        "properties": {
+          "value": 92.7,
+          "unit": "kg/h"
+        }
+      },
+      "run_id": {
+        "properties": {
+          "value": "baseline",
+          "unit": ""
+        }
+      },
+      "sim_time_h": {
+        "properties": {
+          "value": 1.0,
+          "unit": "h"
+        }
+      },
+      "speedup": {
+        "properties": {
+          "value": 60.0,
+          "unit": "x"
+        }
+      },
+      "trucks_operating": {
+        "properties": {
+          "value": 14,
+          "unit": "trucks"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-ramp-ore-up",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Ramp Ore Up",
+      "description": "Haul-road edge bench-06 -> pit-rim, grade 9.0%, length 800 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "bench-06",
+      "to": "pit-rim",
+      "grade_pct": 9.0,
+      "length_m": 800,
+      "direction": "uphill_loaded",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 4,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-ramp-ore-down",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Ramp Ore Down",
+      "description": "Haul-road edge pit-rim -> bench-06, grade -9.0%, length 800 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "pit-rim",
+      "to": "bench-06",
+      "grade_pct": -9.0,
+      "length_m": 800,
+      "direction": "downhill_empty",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 4,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-ramp-ore2-up",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Ramp Ore2 Up",
+      "description": "Haul-road edge bench-07 -> pit-rim, grade 10.0%, length 950 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "bench-07",
+      "to": "pit-rim",
+      "grade_pct": 10.0,
+      "length_m": 950,
+      "direction": "uphill_loaded",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 4,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-ramp-ore2-down",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Ramp Ore2 Down",
+      "description": "Haul-road edge pit-rim -> bench-07, grade -10.0%, length 950 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "pit-rim",
+      "to": "bench-07",
+      "grade_pct": -10.0,
+      "length_m": 950,
+      "direction": "downhill_empty",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 4,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-ramp-waste-up",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Ramp Waste Up",
+      "description": "Haul-road edge bench-02 -> pit-rim, grade 8.0%, length 650 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "bench-02",
+      "to": "pit-rim",
+      "grade_pct": 8.0,
+      "length_m": 650,
+      "direction": "uphill_loaded",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-ramp-waste-down",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Ramp Waste Down",
+      "description": "Haul-road edge pit-rim -> bench-02, grade -8.0%, length 650 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "pit-rim",
+      "to": "bench-02",
+      "grade_pct": -8.0,
+      "length_m": 650,
+      "direction": "downhill_empty",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-haul-crusher-in",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Haul Crusher In",
+      "description": "Haul-road edge pit-rim -> crusher-01, grade 2.0%, length 1200 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "pit-rim",
+      "to": "crusher-01",
+      "grade_pct": 2.0,
+      "length_m": 1200,
+      "direction": "flat_loaded",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 4,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-haul-crusher-out",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Haul Crusher Out",
+      "description": "Haul-road edge crusher-01 -> pit-rim, grade -2.0%, length 1200 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "crusher-01",
+      "to": "pit-rim",
+      "grade_pct": -2.0,
+      "length_m": 1200,
+      "direction": "flat_empty",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 4,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-haul-dump-in",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Haul Dump In",
+      "description": "Haul-road edge pit-rim -> waste-dump, grade 2.5%, length 1800 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "pit-rim",
+      "to": "waste-dump",
+      "grade_pct": 2.5,
+      "length_m": 1800,
+      "direction": "flat_loaded",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-haul-dump-out",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Haul Dump Out",
+      "description": "Haul-road edge waste-dump -> pit-rim, grade -2.5%, length 1800 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "waste-dump",
+      "to": "pit-rim",
+      "grade_pct": -2.5,
+      "length_m": 1800,
+      "direction": "flat_empty",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-service-plant",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Service Plant",
+      "description": "Haul-road edge pit-rim -> plant-yard, grade 1.0%, length 400 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "pit-rim",
+      "to": "plant-yard",
+      "grade_pct": 1.0,
+      "length_m": 400,
+      "direction": "flat_loaded",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:road-service-plant-return",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:RoadSegment:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:mine",
+      "name": "Road Service Plant Return",
+      "description": "Haul-road edge plant-yard -> pit-rim, grade -1.0%, length 400 m ([D]/[A] per 03_domain.md section 2.3).",
+      "class": "RoadSegment",
+      "from": "plant-yard",
+      "to": "pit-rim",
+      "grade_pct": -1.0,
+      "length_m": 400,
+      "direction": "flat_empty",
+      "lane_count": 2,
+      "surface": "gravel"
+    },
+    "features": {
+      "closed": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "rolling_resistance_pct": {
+        "properties": {
+          "value": 3.0,
+          "unit": "%"
+        }
+      },
+      "traffic_count": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:bench-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Bench:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Bench 01",
+      "description": "Waste bench at 0 m relative elevation, bench height 15 m (03_domain.md section 1.2).",
+      "class": "Bench",
+      "geometry": {
+        "x": -1280,
+        "y": 0,
+        "z": -300
+      },
+      "material": "waste",
+      "bench_number": 1,
+      "elevation_m": 0
+    },
+    "features": {
+      "grade_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "role": {
+        "properties": {
+          "value": "waste",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:bench-02",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Bench:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Bench 02",
+      "description": "Waste bench at -15 m relative elevation, bench height 15 m (03_domain.md section 1.2).",
+      "class": "Bench",
+      "geometry": {
+        "x": -1160,
+        "y": -15,
+        "z": 300
+      },
+      "material": "waste",
+      "bench_number": 2,
+      "elevation_m": -15
+    },
+    "features": {
+      "grade_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "role": {
+        "properties": {
+          "value": "waste",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:bench-03",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Bench:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Bench 03",
+      "description": "Waste bench at -30 m relative elevation, bench height 15 m (03_domain.md section 1.2).",
+      "class": "Bench",
+      "geometry": {
+        "x": -1040,
+        "y": -30,
+        "z": -300
+      },
+      "material": "waste",
+      "bench_number": 3,
+      "elevation_m": -30
+    },
+    "features": {
+      "grade_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "role": {
+        "properties": {
+          "value": "waste",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:bench-04",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Bench:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Bench 04",
+      "description": "Waste bench at -45 m relative elevation, bench height 15 m (03_domain.md section 1.2).",
+      "class": "Bench",
+      "geometry": {
+        "x": -920,
+        "y": -45,
+        "z": 300
+      },
+      "material": "waste",
+      "bench_number": 4,
+      "elevation_m": -45
+    },
+    "features": {
+      "grade_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "role": {
+        "properties": {
+          "value": "waste",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:bench-05",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Bench:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Bench 05",
+      "description": "Ore bench at -60 m relative elevation, bench height 15 m (03_domain.md section 1.2).",
+      "class": "Bench",
+      "geometry": {
+        "x": -800,
+        "y": -60,
+        "z": -300
+      },
+      "material": "ore",
+      "bench_number": 5,
+      "elevation_m": -60
+    },
+    "features": {
+      "grade_pct": {
+        "properties": {
+          "value": 0.51,
+          "unit": "%"
+        }
+      },
+      "role": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:bench-06",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Bench:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Bench 06",
+      "description": "Ore bench at -75 m relative elevation, bench height 15 m (03_domain.md section 1.2).",
+      "class": "Bench",
+      "geometry": {
+        "x": -680,
+        "y": -75,
+        "z": 300
+      },
+      "material": "ore",
+      "bench_number": 6,
+      "elevation_m": -75
+    },
+    "features": {
+      "grade_pct": {
+        "properties": {
+          "value": 0.45,
+          "unit": "%"
+        }
+      },
+      "role": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:bench-07",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Bench:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Bench 07",
+      "description": "Ore bench at -90 m relative elevation, bench height 15 m (03_domain.md section 1.2).",
+      "class": "Bench",
+      "geometry": {
+        "x": -560,
+        "y": -90,
+        "z": -300
+      },
+      "material": "ore",
+      "bench_number": 7,
+      "elevation_m": -90
+    },
+    "features": {
+      "grade_pct": {
+        "properties": {
+          "value": 0.58,
+          "unit": "%"
+        }
+      },
+      "role": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:bench-08",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Bench:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Bench 08",
+      "description": "Ore bench at -105 m relative elevation, bench height 15 m (03_domain.md section 1.2).",
+      "class": "Bench",
+      "geometry": {
+        "x": -440,
+        "y": -105,
+        "z": 300
+      },
+      "material": "ore",
+      "bench_number": 8,
+      "elevation_m": -105
+    },
+    "features": {
+      "grade_pct": {
+        "properties": {
+          "value": 0.51,
+          "unit": "%"
+        }
+      },
+      "role": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:bench-09",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Bench:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Bench 09",
+      "description": "Waste bench at -120 m relative elevation, bench height 15 m (03_domain.md section 1.2).",
+      "class": "Bench",
+      "geometry": {
+        "x": -320,
+        "y": -120,
+        "z": -300
+      },
+      "material": "waste",
+      "bench_number": 9,
+      "elevation_m": -120
+    },
+    "features": {
+      "grade_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "role": {
+        "properties": {
+          "value": "waste",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:bench-10",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Bench:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Bench 10",
+      "description": "Ore bench at -135 m relative elevation, bench height 15 m (03_domain.md section 1.2).",
+      "class": "Bench",
+      "geometry": {
+        "x": -200,
+        "y": -135,
+        "z": 300
+      },
+      "material": "ore",
+      "bench_number": 10,
+      "elevation_m": -135
+    },
+    "features": {
+      "grade_pct": {
+        "properties": {
+          "value": 0.51,
+          "unit": "%"
+        }
+      },
+      "role": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:slope-radar-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:SlopeRadar:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Slope Radar East Wall",
+      "description": "Ground-based slope stability radar; TARP thresholds green <5, amber 5-30, red >50 mm/day (03_domain.md section 5.3).",
+      "class": "SlopeRadar",
+      "geometry": {
+        "x": 1400,
+        "y": 0,
+        "z": 0
+      },
+      "wall": "east",
+      "monitored_bench": "kz.kyzyltas.mine:bench-07"
+    },
+    "features": {
+      "tarp_level": {
+        "properties": {
+          "value": "green",
+          "unit": ""
+        }
+      },
+      "velocity_mmday": {
+        "properties": {
+          "value": 1.3,
+          "unit": "mm/day"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:slope-radar-02",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:SlopeRadar:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Slope Radar West Wall",
+      "description": "Ground-based slope stability radar; TARP thresholds green <5, amber 5-30, red >50 mm/day (03_domain.md section 5.3).",
+      "class": "SlopeRadar",
+      "geometry": {
+        "x": -1400,
+        "y": 0,
+        "z": 0
+      },
+      "wall": "west",
+      "monitored_bench": "kz.kyzyltas.mine:bench-03"
+    },
+    "features": {
+      "tarp_level": {
+        "properties": {
+          "value": "green",
+          "unit": ""
+        }
+      },
+      "velocity_mmday": {
+        "properties": {
+          "value": 1.5,
+          "unit": "mm/day"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 01",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -290
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s2",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 87.7,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 153.2,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 100.0,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 631.9,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 15.5,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 136.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "kz.kyzyltas.mine:road-haul-crusher-in",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 97.2,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 14.1,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "hauling",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-02",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 02",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -280
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s1",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 97.0,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 153.2,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 33.0,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 208.7,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 41.8,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 136.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 100.0,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 14.1,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "queued_at_dump",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-03",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 03",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -270
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s2",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 93.7,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 153.2,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 46.4,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 293.1,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 31.8,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 136.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "kz.kyzyltas.mine:road-haul-crusher-in",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 72.1,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 14.1,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "hauling",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-04",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 04",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -260
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s1",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 88.3,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 153.2,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 87.7,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 554.5,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 17.0,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 136.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "kz.kyzyltas.mine:road-haul-crusher-in",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 75.2,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 14.1,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "hauling",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-05",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 05",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -250
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s2",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 98.8,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 153.2,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 26.4,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 167.0,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 46.1,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 136.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "kz.kyzyltas.mine:road-ramp-ore-up",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 45.5,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 14.1,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "hauling",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-06",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 06",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -240
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s3",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 103.8,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 153.2,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 11.2,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 71.0,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 62.4,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 136.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "kz.kyzyltas.mine:road-haul-dump-in",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "waste",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 80.5,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 16.0,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "hauling",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-07",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 07",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -230
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s3",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 97.6,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 153.2,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 30.9,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 195.1,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 44.4,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 136.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "kz.kyzyltas.mine:road-haul-dump-in",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "waste",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 60.8,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 16.0,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "hauling",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-08",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 08",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -220
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s3",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 88.4,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 153.2,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 86.8,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 548.3,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 15.8,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 136.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "kz.kyzyltas.mine:road-ramp-waste-up",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "waste",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 16.7,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 16.0,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "hauling",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-09",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 09",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -210
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s3",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 88.3,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 153.2,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 88.5,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 559.5,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 15.8,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 136.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "kz.kyzyltas.mine:road-ramp-waste-up",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "waste",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 36.5,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 16.0,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "hauling",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-10",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 10",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -200
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s1",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 91.5,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 153.2,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 58.2,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 367.6,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 24.6,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 136.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "kz.kyzyltas.mine:road-ramp-ore-up",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 51.7,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 14.1,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "hauling",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-11",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 11",
+      "description": "Komatsu 830E-5, 227 t nominal payload, AC electric drive, trolley-ready (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -190
+      },
+      "model": "Komatsu 830E-5",
+      "payload_nominal_t": 227.0,
+      "gmw_t": 410,
+      "net_power_kw": 1865,
+      "max_speed_loaded_kmh": 64,
+      "drive": "electric"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s1",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 89.4,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 274.7,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 73.6,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 464.8,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 20.2,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 227.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "kz.kyzyltas.mine:road-ramp-ore-up",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 14.1,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 15.9,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "hauling",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-12",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 12",
+      "description": "Komatsu 830E-5, 227 t nominal payload, AC electric drive, trolley-ready (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 1900,
+        "y": 0,
+        "z": -180
+      },
+      "model": "Komatsu 830E-5",
+      "payload_nominal_t": 227.0,
+      "gmw_t": 410,
+      "net_power_kw": 1865,
+      "max_speed_loaded_kmh": 64,
+      "drive": "electric"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s2",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 100.6,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 274.7,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 20.6,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 130.2,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 53.1,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 227.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "kz.kyzyltas.mine:road-ramp-ore-up",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 12.4,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 15.9,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "hauling",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-13",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 13",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 2380,
+        "y": 0,
+        "z": -290
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s1",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 94.9,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 83.6,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 41.1,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 259.5,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 37.3,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 0.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 65.5,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 42.0,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "loading",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:truck-14",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:HaulTruck:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Haul Truck 14",
+      "description": "Cat 785C, 136 t nominal payload (03_domain.md section 2.2).",
+      "class": "HaulTruck",
+      "geometry": {
+        "x": 2420,
+        "y": 0,
+        "z": -290
+      },
+      "model": "Cat 785C",
+      "payload_nominal_t": 136,
+      "gmw_t": 249,
+      "net_power_kw": 1005,
+      "max_speed_loaded_kmh": 55,
+      "drive": "mechanical"
+    },
+    "features": {
+      "assigned_shovel": {
+        "properties": {
+          "value": "shovel-s2",
+          "unit": ""
+        }
+      },
+      "coolant_temp_c": {
+        "properties": {
+          "value": 92.9,
+          "unit": "C"
+        }
+      },
+      "fuel_lph": {
+        "properties": {
+          "value": 83.6,
+          "unit": "L/h"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 50.7,
+          "unit": "%"
+        }
+      },
+      "next_pm_due_h": {
+        "properties": {
+          "value": 320.4,
+          "unit": "h"
+        }
+      },
+      "oil_fe_ppm": {
+        "properties": {
+          "value": 29.0,
+          "unit": "ppm"
+        }
+      },
+      "parked": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "payload_t": {
+        "properties": {
+          "value": 0.0,
+          "unit": "t"
+        }
+      },
+      "road_segment": {
+        "properties": {
+          "value": "",
+          "unit": ""
+        }
+      },
+      "route": {
+        "properties": {
+          "value": "ore",
+          "unit": ""
+        }
+      },
+      "route_progress_pct": {
+        "properties": {
+          "value": 40.9,
+          "unit": "%"
+        }
+      },
+      "speed_kmh": {
+        "properties": {
+          "value": 42.0,
+          "unit": "km/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "loading",
+          "unit": ""
+        }
+      },
+      "trips_total": {
+        "properties": {
+          "value": 2,
+          "unit": ""
+        }
+      },
+      "work_order_open": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:shovel-s1",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Shovel:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Shovel S1",
+      "description": "Hitachi EX3600-7 hydraulic shovel, 22 m3 bucket (03_domain.md section 2.1/2.4).",
+      "class": "Shovel",
+      "geometry": {
+        "x": 1600,
+        "y": -75,
+        "z": 300
+      },
+      "model": "Hitachi EX3600-7",
+      "bucket_m3": 22,
+      "material": "ore",
+      "bench": "kz.kyzyltas.mine:bench-06",
+      "feeds": [
+        "kz.kyzyltas.mine:stockpile-rom"
+      ]
+    },
+    "features": {
+      "dig_rate_tph": {
+        "properties": {
+          "value": 2353.7,
+          "unit": "t/h"
+        }
+      },
+      "face_grade_pct": {
+        "properties": {
+          "value": 0.45,
+          "unit": "%"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 4.3,
+          "unit": "%"
+        }
+      },
+      "queue_length": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "loading",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:shovel-s2",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Shovel:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Shovel S2",
+      "description": "Hitachi EX3600-7 hydraulic shovel, 22 m3 bucket (03_domain.md section 2.1/2.4).",
+      "class": "Shovel",
+      "geometry": {
+        "x": 1600,
+        "y": -90,
+        "z": -300
+      },
+      "model": "Hitachi EX3600-7",
+      "bucket_m3": 22,
+      "material": "ore",
+      "bench": "kz.kyzyltas.mine:bench-07",
+      "feeds": [
+        "kz.kyzyltas.mine:stockpile-rom"
+      ]
+    },
+    "features": {
+      "dig_rate_tph": {
+        "properties": {
+          "value": 2353.7,
+          "unit": "t/h"
+        }
+      },
+      "face_grade_pct": {
+        "properties": {
+          "value": 0.58,
+          "unit": "%"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 15.4,
+          "unit": "%"
+        }
+      },
+      "queue_length": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "loading",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:shovel-s3",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Shovel:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Shovel S3",
+      "description": "Hitachi EX3600-7 hydraulic shovel, 22 m3 bucket (03_domain.md section 2.1/2.4).",
+      "class": "Shovel",
+      "geometry": {
+        "x": 1600,
+        "y": -15,
+        "z": 300
+      },
+      "model": "Hitachi EX3600-7",
+      "bucket_m3": 22,
+      "material": "waste",
+      "bench": "kz.kyzyltas.mine:bench-02",
+      "feeds": [
+        "kz.kyzyltas.mine:stockpile-waste"
+      ]
+    },
+    "features": {
+      "dig_rate_tph": {
+        "properties": {
+          "value": 2353.7,
+          "unit": "t/h"
+        }
+      },
+      "face_grade_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 77.9,
+          "unit": "%"
+        }
+      },
+      "queue_length": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "loading",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:shovel-s4",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Shovel:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Shovel S4",
+      "description": "Hitachi EX3600-7 hydraulic shovel, 22 m3 bucket (03_domain.md section 2.1/2.4).",
+      "class": "Shovel",
+      "geometry": {
+        "x": 1600,
+        "y": -30,
+        "z": -300
+      },
+      "model": "Hitachi EX3600-7",
+      "bucket_m3": 22,
+      "material": "waste",
+      "bench": "kz.kyzyltas.mine:bench-03",
+      "feeds": [
+        "kz.kyzyltas.mine:stockpile-waste"
+      ]
+    },
+    "features": {
+      "dig_rate_tph": {
+        "properties": {
+          "value": 0.0,
+          "unit": "t/h"
+        }
+      },
+      "face_grade_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "queue_length": {
+        "properties": {
+          "value": 0,
+          "unit": ""
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "down",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:drill-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Drill:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Drill 01",
+      "description": "Sandvik D55SP rotary drill, 251 mm hole diameter (03_domain.md section 4.1).",
+      "class": "Drill",
+      "geometry": {
+        "x": 1500,
+        "y": -90,
+        "z": -200
+      },
+      "model": "Sandvik D55SP",
+      "hole_diameter_mm": 251,
+      "assigned_bench": "kz.kyzyltas.mine:bench-07"
+    },
+    "features": {
+      "drill_hours_factor": {
+        "properties": {
+          "value": 1.0,
+          "unit": ""
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 61.9,
+          "unit": "%"
+        }
+      },
+      "penetration_rate_mh": {
+        "properties": {
+          "value": 32.0,
+          "unit": "m/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "drilling",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:drill-02",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Drill:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:dispatch",
+      "name": "Drill 02",
+      "description": "Sandvik D55SP rotary drill, 251 mm hole diameter (03_domain.md section 4.1).",
+      "class": "Drill",
+      "geometry": {
+        "x": 1400,
+        "y": -135,
+        "z": 250
+      },
+      "model": "Sandvik D55SP",
+      "hole_diameter_mm": 251,
+      "assigned_bench": "kz.kyzyltas.mine:bench-10"
+    },
+    "features": {
+      "drill_hours_factor": {
+        "properties": {
+          "value": 1.0,
+          "unit": ""
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 27.3,
+          "unit": "%"
+        }
+      },
+      "penetration_rate_mh": {
+        "properties": {
+          "value": 32.0,
+          "unit": "m/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "drilling",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:crusher-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Crusher:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "Primary Gyratory Crusher",
+      "description": "FLSmidth 60in x 113in gyratory, 4186 t/h rated, 750 kW (03_domain.md section 7.2).",
+      "class": "Crusher",
+      "geometry": {
+        "x": 1750,
+        "y": 0,
+        "z": -50
+      },
+      "model": "FLSmidth 60x113 Gyratory",
+      "rated_tph": 4186,
+      "rated_power_kw": 750,
+      "feeds": [
+        "kz.kyzyltas.mine:conveyor-02"
+      ]
+    },
+    "features": {
+      "availability": {
+        "properties": {
+          "value": 1.0,
+          "unit": ""
+        }
+      },
+      "feed_grade_pct": {
+        "properties": {
+          "value": 0.513,
+          "unit": "%"
+        }
+      },
+      "health_pct": {
+        "properties": {
+          "value": 98.6,
+          "unit": "%"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "crushing",
+          "unit": ""
+        }
+      },
+      "throughput_tph": {
+        "properties": {
+          "value": 4186.0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:conveyor-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Conveyor:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "Overland Conveyor",
+      "description": "3.8 km overland conveyor from the crushed-ore stockpile to the SAG mill, 1.6 m belt, 4880 t/h, 5 m/s, 3640 kW (03_domain.md section 7.2).",
+      "class": "Conveyor",
+      "geometry": {
+        "x": 1820,
+        "y": 0,
+        "z": -20
+      },
+      "model": "Overland Conveyor",
+      "belt_width_m": 1.6,
+      "length_m": 3800,
+      "rated_tph": 4880,
+      "rated_power_kw": 3640,
+      "feeds": [
+        "kz.kyzyltas.mine:mill-sag-01"
+      ]
+    },
+    "features": {
+      "state": {
+        "properties": {
+          "value": "running",
+          "unit": ""
+        }
+      },
+      "throughput_tph": {
+        "properties": {
+          "value": 3425.0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:conveyor-02",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Conveyor:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "Crusher-to-Stockpile Conveyor",
+      "description": "Short conveyor from the primary crusher to the crushed-ore stockpile [A].",
+      "class": "Conveyor",
+      "geometry": {
+        "x": 1870,
+        "y": 0,
+        "z": 0
+      },
+      "model": "Feeder Conveyor",
+      "belt_width_m": 1.2,
+      "length_m": 450,
+      "rated_tph": 4200,
+      "rated_power_kw": 900,
+      "feeds": [
+        "kz.kyzyltas.mine:stockpile-crushed"
+      ]
+    },
+    "features": {
+      "state": {
+        "properties": {
+          "value": "running",
+          "unit": ""
+        }
+      },
+      "throughput_tph": {
+        "properties": {
+          "value": 4186.0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:mill-sag-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Mill:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "SAG Mill",
+      "description": "40ft x 26ft gearless-drive SAG mill, 28 MW @ 9.31 rpm, 3425 t/h rated (03_domain.md section 6.1/7.2).",
+      "class": "Mill",
+      "geometry": {
+        "x": 1950,
+        "y": 0,
+        "z": 30
+      },
+      "mill_type": "SAG",
+      "dimensions": "40x26 ft",
+      "installed_power_kw": 28000,
+      "rpm": 9.31,
+      "rated_tph": 3425,
+      "feeds": [
+        "kz.kyzyltas.mine:mill-ball-01",
+        "kz.kyzyltas.mine:mill-ball-02"
+      ]
+    },
+    "features": {
+      "health_pct": {
+        "properties": {
+          "value": 88.0,
+          "unit": "%"
+        }
+      },
+      "p80_um": {
+        "properties": {
+          "value": 180.0,
+          "unit": "um"
+        }
+      },
+      "power_kw": {
+        "properties": {
+          "value": 28000.0,
+          "unit": "kW"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "grinding",
+          "unit": ""
+        }
+      },
+      "throughput_tph": {
+        "properties": {
+          "value": 3425.0,
+          "unit": "t/h"
+        }
+      },
+      "x80_feed_mm": {
+        "properties": {
+          "value": 608.9,
+          "unit": "mm"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:mill-ball-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Mill:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "Ball Mill 01",
+      "description": "28ft x 44ft gearless-drive ball mill, 22 MW @ 10.99 rpm, 1706 t/h rated each (03_domain.md section 6.1/7.2).",
+      "class": "Mill",
+      "geometry": {
+        "x": 2020,
+        "y": 0,
+        "z": 30
+      },
+      "mill_type": "Ball",
+      "dimensions": "28x44 ft",
+      "installed_power_kw": 22000,
+      "rpm": 10.99,
+      "rated_tph": 1706,
+      "feeds": [
+        "kz.kyzyltas.mine:flotation-01"
+      ]
+    },
+    "features": {
+      "health_pct": {
+        "properties": {
+          "value": 70.9,
+          "unit": "%"
+        }
+      },
+      "power_kw": {
+        "properties": {
+          "value": 22000.0,
+          "unit": "kW"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "grinding",
+          "unit": ""
+        }
+      },
+      "throughput_tph": {
+        "properties": {
+          "value": 1712.0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:mill-ball-02",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Mill:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "Ball Mill 02",
+      "description": "28ft x 44ft gearless-drive ball mill, 22 MW @ 10.99 rpm, 1706 t/h rated each (03_domain.md section 6.1/7.2).",
+      "class": "Mill",
+      "geometry": {
+        "x": 2020,
+        "y": 0,
+        "z": -30
+      },
+      "mill_type": "Ball",
+      "dimensions": "28x44 ft",
+      "installed_power_kw": 22000,
+      "rpm": 10.99,
+      "rated_tph": 1706,
+      "feeds": [
+        "kz.kyzyltas.mine:flotation-01"
+      ]
+    },
+    "features": {
+      "health_pct": {
+        "properties": {
+          "value": 92.9,
+          "unit": "%"
+        }
+      },
+      "power_kw": {
+        "properties": {
+          "value": 22000.0,
+          "unit": "kW"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "grinding",
+          "unit": ""
+        }
+      },
+      "throughput_tph": {
+        "properties": {
+          "value": 1712.0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:flotation-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:FlotationCell:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "Flotation Bank",
+      "description": "FLSmidth/WEMCO self-aspirated rougher-scavenger bank, 1576 t/h solids rated (03_domain.md section 7.2/7.4).",
+      "class": "FlotationCell",
+      "geometry": {
+        "x": 2090,
+        "y": 0,
+        "z": 60
+      },
+      "model": "FLSmidth/WEMCO self-aspirated",
+      "rated_tph": 1576,
+      "feeds": [
+        "kz.kyzyltas.mine:tailings-01"
+      ]
+    },
+    "features": {
+      "au_recovery_pct": {
+        "properties": {
+          "value": 60.0,
+          "unit": "%"
+        }
+      },
+      "conc_grade_pct": {
+        "properties": {
+          "value": 22.0,
+          "unit": "%"
+        }
+      },
+      "cu_recovery_pct": {
+        "properties": {
+          "value": 79.3,
+          "unit": "%"
+        }
+      },
+      "feed_grade_pct": {
+        "properties": {
+          "value": 0.51,
+          "unit": "%"
+        }
+      },
+      "feed_tph": {
+        "properties": {
+          "value": 3425.0,
+          "unit": "t/h"
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "running",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:tailings-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Tailings:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "Tailings Facility",
+      "description": "2 x 80 m high-rate thickeners, 4313 m3/h feed each, feeding the TSF (03_domain.md section 7.5).",
+      "class": "Tailings",
+      "geometry": {
+        "x": 2250,
+        "y": 0,
+        "z": 100
+      },
+      "thickener_count": 2,
+      "thickener_diameter_m": 80,
+      "thickener_feed_capacity_m3h": 4313
+    },
+    "features": {
+      "state": {
+        "properties": {
+          "value": "flowing",
+          "unit": ""
+        }
+      },
+      "tails_grade_pct": {
+        "properties": {
+          "value": 0.105,
+          "unit": "%"
+        }
+      },
+      "throughput_tph": {
+        "properties": {
+          "value": 3424.0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:stockpile-rom",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Stockpile:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "ROM Ore Stockpile",
+      "description": "Run-of-mine ore pad in front of the primary crusher; trucks dump here, the crusher draws from it.",
+      "class": "Stockpile",
+      "geometry": {
+        "x": 1700,
+        "y": 0,
+        "z": 150
+      },
+      "capacity_t": 150000,
+      "feeds": [
+        "kz.kyzyltas.mine:crusher-01"
+      ]
+    },
+    "features": {
+      "fill_pct": {
+        "properties": {
+          "value": 2.6,
+          "unit": "%"
+        }
+      },
+      "grade_pct": {
+        "properties": {
+          "value": 0.513,
+          "unit": "%"
+        }
+      },
+      "mass_t": {
+        "properties": {
+          "value": 3898.0,
+          "unit": "t"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:stockpile-hg",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Stockpile:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "High-Grade Ore Stockpile",
+      "description": "High-grade reserve (0.65% Cu) reclaimed by grade control when the ROM ore grade falls below the 0.50% target (03_domain.md section 3.2).",
+      "class": "Stockpile",
+      "geometry": {
+        "x": 1780,
+        "y": 0,
+        "z": 60
+      },
+      "capacity_t": 150000,
+      "feeds": [
+        "kz.kyzyltas.mine:crusher-01"
+      ]
+    },
+    "features": {
+      "fill_pct": {
+        "properties": {
+          "value": 100.0,
+          "unit": "%"
+        }
+      },
+      "grade_pct": {
+        "properties": {
+          "value": 0.65,
+          "unit": "%"
+        }
+      },
+      "mass_t": {
+        "properties": {
+          "value": 150000.0,
+          "unit": "t"
+        }
+      },
+      "reclaim_tph": {
+        "properties": {
+          "value": 0.0,
+          "unit": "t/h"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:stockpile-crushed",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Stockpile:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "Crushed-Ore Stockpile",
+      "description": "Crushed-ore stockpile between crusher and SAG mill: ~40 kt, about 12 h of mill feed (03_domain.md section 3.2).",
+      "class": "Stockpile",
+      "geometry": {
+        "x": 1880,
+        "y": 0,
+        "z": 60
+      },
+      "capacity_t": 40000,
+      "feeds": [
+        "kz.kyzyltas.mine:conveyor-01"
+      ]
+    },
+    "features": {
+      "fill_pct": {
+        "properties": {
+          "value": 71.9,
+          "unit": "%"
+        }
+      },
+      "grade_pct": {
+        "properties": {
+          "value": 0.51,
+          "unit": "%"
+        }
+      },
+      "mass_t": {
+        "properties": {
+          "value": 28761.0,
+          "unit": "t"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:stockpile-waste",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:Stockpile:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "Low-Grade / Waste Stockpile",
+      "description": "Waste dump receiving waste-rock haulage.",
+      "class": "Stockpile",
+      "geometry": {
+        "x": 1600,
+        "y": 0,
+        "z": 250
+      },
+      "capacity_t": 2000000
+    },
+    "features": {
+      "fill_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "grade_pct": {
+        "properties": {
+          "value": 0.0,
+          "unit": "%"
+        }
+      },
+      "mass_t": {
+        "properties": {
+          "value": 1088.0,
+          "unit": "t"
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:fan-plant-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:FanStation:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:plant",
+      "name": "Plant Dust Fan Station",
+      "description": "Crusher building dust suppression fan [A].",
+      "class": "FanStation",
+      "geometry": {
+        "x": 1950,
+        "y": 0,
+        "z": -80
+      },
+      "purpose": "plant_dust"
+    },
+    "features": {
+      "speed_factor": {
+        "properties": {
+          "value": 1.0,
+          "unit": ""
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "running",
+          "unit": ""
+        }
+      }
+    }
+  },
+  {
+    "thingId": "kz.kyzyltas.mine:fan-pit-01",
+    "policyId": "default:basic_policy",
+    "definition": "kz.kyzyltas.mine:FanStation:1.0.0",
+    "attributes": {
+      "_isType": false,
+      "_parents": "kz.kyzyltas.mine:pit",
+      "name": "Haul-Road Dust Station",
+      "description": "Haul-road dust suppression (water truck / fan-assisted spray), per AP-42 section 13.2.2 (03_domain.md section 5.1).",
+      "class": "FanStation",
+      "geometry": {
+        "x": -200,
+        "y": 0,
+        "z": 850
+      },
+      "purpose": "haul_road_dust"
+    },
+    "features": {
+      "road_pm10_kg_h": {
+        "properties": {
+          "value": 92.7,
+          "unit": "kg/h"
+        }
+      },
+      "speed_factor": {
+        "properties": {
+          "value": 1.0,
+          "unit": ""
+        }
+      },
+      "state": {
+        "properties": {
+          "value": "running",
+          "unit": ""
+        }
+      },
+      "watering_on": {
+        "properties": {
+          "value": 1,
+          "unit": ""
+        }
+      }
+    }
+  }
+]

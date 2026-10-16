@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kyzyl-Tas - Digital Mine on OpenEgiz</title>
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  :root {
+    --bg: #0d1117; --panel: #151b23; --border: #2a3441; --text: #e6edf3; --dim: #9aa7b4;
+    --accent: #58a6ff; --warm: #f0b429; --good: #3fb950; --bad: #ff6b5e;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; }
+  .slide { width: 1280px; height: 720px; padding: 44px 56px; position: relative; overflow: hidden;
+    page-break-after: always; break-after: page; display: flex; flex-direction: column; }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+  h1 { font-size: 40px; margin: 0 0 8px; line-height: 1.15; }
+  h2 { font-size: 30px; margin: 0 0 18px; }
+  h2 .kicker { display: block; font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--warm); margin-bottom: 6px; }
+  p, li { font-size: 17px; line-height: 1.45; }
+  ul { margin: 0; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  .dim { color: var(--dim); }
+  .row { display: flex; gap: 28px; flex: 1; min-height: 0; }
+  .col { flex: 1; min-width: 0; }
+  .shot { width: 100%; border: 1px solid var(--border); border-radius: 8px; display: block; }
+  .box { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
+  code { font-family: Consolas, "Liberation Mono", monospace; font-size: .9em; background: #0f1620;
+    padding: 1px 5px; border-radius: 4px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+  th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #222b36; vertical-align: top; }
+  th { color: var(--dim); font-weight: 600; }
+  .num { text-align: right; white-space: nowrap; }
+  .good { color: var(--good); } .bad { color: var(--bad); } .warm { color: var(--warm); }
+  .footer { position: absolute; left: 56px; right: 56px; bottom: 16px; font-size: 12px; color: var(--dim);
+    display: flex; justify-content: space-between; }
+  .flow { display: flex; align-items: center; gap: 6px; flex-wrap: nowrap; font-size: 15px; }
+  .node { background: var(--panel); border: 1px solid var(--accent); border-radius: 8px; padding: 8px 10px; flex: 1; }
+  .node b { display: block; font-size: 15px; }
+  .node span { color: var(--dim); font-size: 12px; }
+  .arrow { color: var(--accent); font-size: 20px; }
+  .chain li { margin-bottom: 4px; }
+  .big { font-size: 22px; }
+  .pill { display: inline-block; background: #1f2a36; border: 1px solid var(--border); border-radius: 999px;
+    padding: 3px 10px; font-size: 14px; margin: 0 6px 6px 0; }
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section class="slide">
+  <h1>Kyzyl-Tas - a digital twin of an open-pit copper mine on OpenEgiz</h1>
+  <p class="dim" style="margin:0 0 16px">Fictional open-pit Cu-Au mine with a 30 Mt/a concentrator, parametrised from public data for
+    Kazakhstan's Bozshakol and Aktogay operations. Every mine object is an Eclipse Ditto twin; a physics-based engine drives
+    them over MQTT; a 3D interface reads them back from the platform and runs what-if scenarios.</p>
+  <div class="row">
+    <div class="col" style="flex:2.1"><img class="shot" src="img/main.png" alt="Kyzyl-Tas 3D interface"></div>
+    <div class="col box">
+      <p style="margin-top:0"><b>Start</b> (clean Ubuntu with Docker):</p>
+      <p><code>sudo apt-get update &amp;&amp; sudo apt-get install -y make</code><br><code>make up</code></p>
+      <p><b>Open</b><br><code>http://localhost:8000</code> - 3D mine, no login<br>
+        <code>http://localhost:3000</code> - Grafana: mine dashboard; OpenEgiz Twins/Types (login printed by <code>make up</code>)</p>
+      <p class="dim" style="font-size:15px">87 twins · 13 what-if scenarios with Undo · 4 modules · shadow baseline</p>
+    </div>
+  </div>
+  <div class="footer"><span>Digital Mine on OpenEgiz · 2026</span><span>1</span></div>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <h2><span class="kicker">The mine</span>A real-scale operation, checked against the reference site</h2>
+  <div class="row">
+    <div class="col">
+      <ul>
+        <li><b>Pit:</b> 10 benches (waste cap above, ore below), main and alternate ore ramps, waste ramp, 12 haul-road segments.</li>
+        <li><b>Fleet:</b> 14 haul trucks (12× Cat 785C 136 t, 2× Komatsu 830E-5 227 t with AC electric drive), 4 Hitachi EX3600 shovels, 2 drills.</li>
+        <li><b>Plant:</b> gyratory crusher 4,186 t/h → 40 kt crushed-ore stockpile → SAG 28 MW + 2 ball mills 22 MW → flotation → tailings.</li>
+        <li><b>Stockpiles:</b> ROM pad, crushed ore, high-grade reserve (grade control), waste dump.</li>
+        <li><b>Site:</b> 214 MW substation, weather station (Kazakh steppe, down to −38 °C), 2 slope radars, dust stations.</li>
+      </ul>
+      <p class="dim" style="font-size:15px">Plant capacities, fleet types, power and climate: KAZ Minerals reports and presentations [S1-S5];
+        equipment specifications [S11-S14]. Full sourced parameter set: <code>mine/docs/03_domain.md</code>.</p>
+    </div>
+    <div class="col">
+      <div class="box">
+        <p style="margin:0 0 8px"><b>Twin baseline vs reference</b> <span class="dim">(1,000 mine hours, seed 3, <code>tools/validate.py</code>)</span></p>
+        <table>
+          <tr><th>Quantity</th><th class="num">Twin</th><th class="num">Reference</th></tr>
+          <tr><td>Mill feed (with mill outages)</td><td class="num">3,245 t/h (28.4 Mt/a)</td><td class="num">30 Mt/a design</td></tr>
+          <tr><td>Copper recovery</td><td class="num">79.4 %</td><td class="num">79.7 % (2020)</td></tr>
+          <tr><td>Cu in concentrate per tonne milled</td><td class="num">4.10 kg/t</td><td class="num">4.04 kg/t (2020)</td></tr>
+          <tr><td>Truck fleet availability</td><td class="num">92.6 %</td><td class="num">88-92 % target</td></tr>
+          <tr><td>Haul cycle</td><td class="num">24 min</td><td class="num">~22 min (fleet plan)</td></tr>
+          <tr><td>Unplanned failures / week</td><td class="num">24</td><td class="num">from all-causes MTBF</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>Kyzyl-Tas · the mine</span><span>2</span></div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <h2><span class="kicker">Built on OpenEgiz</span>Every object is a Ditto twin; all data flows through the platform</h2>
+  <div class="flow" style="margin-bottom:22px">
+    <div class="node"><b>mine-engine</b><span>Python simulation, 60× real time</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Mosquitto</b><span>Ditto-protocol merge, telemetry/&lt;twin&gt;</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Eclipse Ditto</b><span>87 twins · kz.kyzyltas.mine</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Telegraf → InfluxDB</b><span>history of every feature</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Grafana</b><span>dashboard · Twins/Types pages</span></div>
+  </div>
+  <div class="row">
+    <div class="col box">
+      <p style="margin-top:0"><b>mine-ui</b> (nginx + React/three.js) reads the twins from Ditto - REST for the catalogue, server-sent events for
+        live changes - and history from InfluxDB. Its nginx adds the platform credentials server-side, so the browser needs no login.</p>
+      <p><b>What-if path:</b> the interface writes <code>PATCH .../things/kz.kyzyltas.mine:scenario</code> → Ditto publishes the change
+        on MQTT → the engine applies it → effects return through the equipment twins and the <code>kpi</code> twin.</p>
+    </div>
+    <div class="col box">
+      <p style="margin-top:0"><b>Started by one command.</b> <code>deploy/compose/mine.yml</code> adds <code>mine-setup</code> (creates the twins),
+        <code>mine-engine</code> and <code>mine-ui</code>; the Makefile always loads it, so <code>make up</code> starts platform and mine together.</p>
+      <p><b>Platform fixes</b> made for a clean Ubuntu VM: LF line endings, Telegraf topic filter and no per-command tags (series
+        explosion), mine port in env/preflight/smoke, anonymous read-only Grafana, provisioned mine dashboard.</p>
+      <p class="dim" style="margin-bottom:0">The first start downloads about 2.5 GB of images (several minutes); later starts take about a minute.
+        <code>make smoke</code> checks the whole chain end to end.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Kyzyl-Tas · architecture</span><span>3</span></div>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <h2><span class="kicker">Mine model</span>21 type twins, 66 instance twins, one hierarchy</h2>
+  <div class="row">
+    <div class="col" style="flex:1.6"><img class="shot" src="img/model.png" alt="Twin model view"></div>
+    <div class="col">
+      <ul>
+        <li><b>Types:</b> each instance names its type twin in <code>definition</code>; type twins hold instance counts and the feature names and units.</li>
+        <li><b>Hierarchy</b> in <code>_parents</code>: mine → pit → benches, radars; mine → dispatch → trucks, shovels, drills;
+          mine → plant → crusher, conveyors, mills, flotation, tailings, stockpiles.</li>
+        <li><b>Material flow</b> in <code>feeds</code>: shovels → ROM pad → crusher → stockpile → SAG → ball mills → flotation → tailings;
+          the substation feeds the plant. Shovels name their <code>bench</code>.</li>
+        <li><b>Live relations:</b> truck <code>assigned_shovel</code> and <code>road_segment</code>, road <code>closed</code>, grade-control <code>reclaim_tph</code>.</li>
+        <li><b>States:</b> haul phase, health, queue, throughput, power, grade, drill rate, radar creep, PM10...</li>
+        <li>A contract test fails on any missing, extra or wrongly typed feature between engine and twins.</li>
+      </ul>
+      <p class="dim" style="font-size:15px">See it: <b>Twin model</b> button in the 3D view (no login), or Grafana → OpenEgiz → Twins / Types.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Kyzyl-Tas · mine model</span><span>4</span></div>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <h2><span class="kicker">Behaviour</span>Physics and process models, linked through the stockpiles</h2>
+  <div class="row">
+    <div class="col">
+      <table>
+        <tr><th>Process</th><th>Model</th></tr>
+        <tr><td>Truck travel</td><td>rimpull / grade resistance per segment; ramp, winter and visibility speed caps</td></tr>
+        <tr><td>Haul cycle</td><td>queue → spot → load (passes × swing) → haul → dump (2 bays) → return</td></tr>
+        <tr><td>Blasting</td><td>Kuz-Ram X50/X80 from powder factor</td></tr>
+        <tr><td>Grinding</td><td>SAG throughput from feed size, hardness (Axb), power and ball mills in service; Bond P80; power follows load</td></tr>
+        <tr><td>Flotation</td><td>constant-tails recovery with grind and residence penalties</td></tr>
+        <tr><td>Stockpiles</td><td>mass and grade balance (mass conserved): ROM, crushed, high-grade, waste</td></tr>
+        <tr><td>Reliability</td><td>Weibull wear-out with condition signal + random faults (all-causes MTBF)</td></tr>
+        <tr><td>Dust</td><td>US EPA AP-42 haul-road PM10; no watering below 0 °C</td></tr>
+        <tr><td>Energy, economics</td><td>diesel by class/phase, grid power, CO₂ (0.80 kg/kWh), net smelter revenue</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <div class="box">
+        <p style="margin-top:0"><b>Interlinked.</b> Trucks deliver ore at the grade of the face they loaded → ROM pad → crusher (plus high-grade
+          ore when grade control asks) → 40 kt crushed-ore stockpile → SAG mill → flotation. Pit changes reach the plant only through the
+          stockpiles - so haulage scenarios hit "ore mined" at once and plant output later.</p>
+        <p><b>Constraints and back-pressure:</b> one truck under a shovel, two dump bays, winter speed caps, one ball mill down cuts
+          grinding to 60 %, the crusher stops when the crushed pile is full and ore trucks wait when the ROM pad is full, closed ramp → 2.7 km
+          detour, only electric trucks use the trolley line.</p>
+        <p style="margin-bottom:0"><b>Shadow baseline:</b> on every scenario click or Undo, a copy of the live mine (including random streams)
+          continues without the scenario - the deltas measure that scenario only.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>Kyzyl-Tas · behaviour</span><span>5</span></div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <h2><span class="kicker">What-if, step by step</span>Shovel S2 failure - the causal chain on the stand</h2>
+  <div class="row">
+    <div class="col" style="flex:1.7"><img class="shot" src="img/shovel.png" alt="Shovel S2 failure active"></div>
+    <div class="col">
+      <ol class="chain" style="padding-left:20px;margin:0">
+        <li><code>shovel-s2</code> forced down (hydraulics, 10 mine hours) - red in 3D and on the minimap.</li>
+        <li>Dispatch re-routes S2's trucks to S1 (event log: "rerouted").</li>
+        <li>This screenshot, ~100 mine-minutes after the click: ore mined <span class="bad">−30 %</span>, ore grade
+          <span class="bad">0.51 → 0.47 %</span>, contained Cu mined <span class="bad">−36 %</span>, haul cycle <span class="bad">+31 %</span>.
+          (Slide 7 gives two-hour averages, which include the first minutes.)</li>
+        <li>Grade control reclaims the high-grade stockpile (800 t/h, highlighted).</li>
+        <li>The crushed-ore buffer keeps the mill full: plant copper only <span class="bad">−0.5 %</span> so far;
+          over 12 mine hours it falls 2.8 % on average (6.6 % with the fleet-management system offline).</li>
+      </ol>
+      <p style="margin-top:14px"><b>Undo - back to baseline:</b> every <code>scenario</code> field returns to its default, S2 returns to service at once,
+        trucks are re-routed back, and the comparison restarts from zero.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Kyzyl-Tas · what-if walkthrough</span><span>6</span></div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <h2><span class="kicker">What-if scenarios</span>13 one-click scenarios, measured against the shadow baseline</h2>
+  <table style="font-size:13.5px">
+    <tr><th>Scenario</th><th>What changes</th><th>First 2 mine hours (average)</th><th>Mine hours 2-10</th></tr>
+    <tr><td>Shovel S2 failure</td><td>S2 down 10 mine h</td><td>ore −15 %, grade −5 %, cycle +18 %</td><td>ore −17 %; Cu output −3 % (buffer, grade control)</td></tr>
+    <tr><td>Slope radar alarm</td><td>main ore ramp closed</td><td>ore −16 %, cycle +19 %</td><td>ore −30 %, cycle +28 %</td></tr>
+    <tr><td>Post-blast fume delay</td><td>S1, S3 blocked ~150 min</td><td>ore −15 %, cycle +19 %</td><td>ore −6 %, recovering</td></tr>
+    <tr><td>Siberian cold snap (−38 °C)</td><td>temperature, wind</td><td>ore −5 %, cycle +9 %</td><td>ore −13 %; road PM10 ≈ ×2</td></tr>
+    <tr><td>Spring thaw</td><td>rolling resistance +2.5 pts</td><td>ore −14 %, cycle +27 %</td><td>ore −26 %, cycle +39 %</td></tr>
+    <tr><td>Fleet cut (−2 trucks)</td><td>two ore trucks parked</td><td>ore −10 %</td><td>ore −14 %</td></tr>
+    <tr><td>Fleet-management system offline</td><td>fixed plan, no grade control</td><td>≈ 0 %</td><td>≈ 0 %; matters during failures (slide 8)</td></tr>
+    <tr><td>Intensify blast (PF 0.30 → 0.40)</td><td>powder factor ×1.33</td><td>mill feed, Cu, revenue +11 %</td><td>same</td></tr>
+    <tr><td>Harder ore domain (BWi 14 → 16)</td><td>Bond Wi, Axb</td><td>mill feed, Cu, revenue −24 %</td><td>same; buffer +11 %</td></tr>
+    <tr><td>Grid power curtailment (mills at 75%)</td><td>SAG and ball mills at 75 % power</td><td>mill feed, Cu −25 %</td><td>grid energy −23 %, CO₂ −21 %</td></tr>
+    <tr><td>Enable trolley assist</td><td>830E trucks on trolley</td><td>diesel −4 %</td><td>diesel −7 %, ore +5 %</td></tr>
+    <tr><td>Copper price drop (−25%)</td><td>Cu $10,900/t, TC/RC +$80</td><td>revenue −19 %</td><td>revenue −19 %</td></tr>
+    <tr><td>Predictive maintenance</td><td>maintenance strategy</td><td>no change yet</td><td>fewer failures over days (slide 8)</td></tr>
+  </table>
+  <p class="dim" style="font-size:14px;margin-top:10px">Averages against the shadow baseline (seed 3) from <code>mine/engine/tools/measure_scenarios.py</code>; random failures make the live stand vary.
+    Every scenario stays active until <b>↺ Undo - back to baseline</b>. <b>Custom what-if</b> sets the scenario twin's values directly
+    (shovel out, trucks parked, crusher, powder factor, dispatch, temperature, ore hardness, mill power, road condition, copper price).</p>
+  <div class="footer"><span>Kyzyl-Tas · scenarios</span><span>7</span></div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <h2><span class="kicker">Modules</span>Modules that decide while the mine runs - and energy accounting</h2>
+  <div class="row" style="flex-wrap:wrap;gap:18px">
+    <div class="col box" style="flex-basis:45%">
+      <p style="margin-top:0"><b class="warm">Dispatch</b> - Haulage and Dispatch</p>
+      <p>Sends each empty truck to the eligible shovel with the shortest queue; skips broken, closed-off or fume-blocked shovels. Offline,
+        trucks of a broken shovel idle ~30 min until a radio reassignment. With dispatch and grade control, an S2 failure costs
+        <b>−23 %</b> ore and <b>−2.8 %</b> copper; offline <b>−28 %</b> and <b>−6.6 %</b> (mean of 8 runs).</p>
+    </div>
+    <div class="col box" style="flex-basis:45%">
+      <p style="margin-top:0"><b class="warm">Grade control</b> - Geology and Ore Quality</p>
+      <p>When ROM ore falls below 0.50 % Cu, reclaims the 0.65 % high-grade pile into the crusher feed in the proportion that restores the target
+        (≤ 800 t/h). Seen in <code>stockpile-hg.reclaim_tph</code> and "grade control" events.</p>
+    </div>
+    <div class="col box" style="flex-basis:45%">
+      <p style="margin-top:0"><b class="warm">Predictive maintenance</b> - Equipment Reliability</p>
+      <p>Health and hours to wear-out are estimated from coolant and oil-iron signals; work orders bring trucks in at the next shift change
+        instead of failing in service. Over 200 mine hours (8 runs): unplanned failures −23 % (191 vs 249); availability about equal,
+        since planned repairs also take trucks out.</p>
+    </div>
+    <div class="col box" style="flex-basis:45%">
+      <p style="margin-top:0"><b class="warm">Energy and CO₂</b> - Energy</p>
+      <p>Accounting, not a control decision: diesel by truck class and phase, grid power for crushing, grinding and trolley lines, cost and CO₂ at 0.80 kg/kWh.
+        Trolley assist (two electric 830E trucks): diesel −4...−7 %, CO₂ about unchanged on the coal-heavy grid (break-even ≈ 0.64 kg/kWh).</p>
+    </div>
+  </div>
+  <div class="footer"><span>Kyzyl-Tas · modules</span><span>8</span></div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <h2><span class="kicker">History in the platform</span>Grafana: current mine vs shadow baseline from InfluxDB</h2>
+  <div class="row">
+    <div class="col" style="flex:1.8"><img class="shot" src="img/grafana.png" alt="Grafana dashboard"></div>
+    <div class="col">
+      <ul>
+        <li>Provisioned dashboard <b>"Kyzyl-Tas Mine - KPIs vs baseline"</b>, Grafana's home page, read-only without login.</li>
+        <li>Solid: live mine; dashed grey: shadow baseline.</li>
+        <li>Ore mined, haul cycle, mill feed, copper, crushed-ore buffer, grade, revenue, CO₂, diesel, fleet availability, grade-control reclaim,
+          haul-road PM10.</li>
+        <li>Every point comes from twin events: Ditto → MQTT → Telegraf → InfluxDB.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>Kyzyl-Tas · Grafana</span><span>9</span></div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <h2><span class="kicker">Data and assumptions</span>Real sources, synthetic telemetry, stated limits</h2>
+  <div class="row">
+    <div class="col">
+      <ul>
+        <li><b>All telemetry is synthetic</b> - generated by the engine. No company's operational data is used; no third-party dataset is stored.</li>
+        <li><b>The mine is fictional</b>; its parameters come from public sources and carry tags: reported [R], vendor [V], literature [L],
+          derived [D], assumed [A].</li>
+        <li>Sources: KAZ Minerals reports [S1-S5], equipment specs, Kuz-Ram, Bond, AP-42, Kazakh grid factors and tariffs, 2026 metal prices,
+          reliability studies - listed in <code>mine/docs/03_domain.md</code> §12.</li>
+        <li><b>Assumptions</b> [A]: road network and pit geometry, failure parameters, high-grade pile, grade-control target, grid factor.</li>
+      </ul>
+    </div>
+    <div class="col box">
+      <p style="margin-top:0"><b>Limitations</b></p>
+      <ul style="font-size:15.5px">
+        <li>14 trucks vs Bozshakol's 18: ore demand met, strip ratio ≈ 0.39 vs 0.7 planned.</li>
+        <li>Each haul leg timed as one block; per-segment traffic is estimated.</li>
+        <li>Price drop changes revenue only; the cut-off grade does not move.</li>
+        <li>Dispatch is a shortest-queue rule, not a full LP optimiser.</li>
+        <li>Wind, slope-radar velocity and fume delay exist only inside their presets; the other drivers are custom what-if sliders.</li>
+      </ul>
+      <p style="margin-bottom:0"><b>Verification:</b> 58 engine tests (physics vs worked examples, mass balance, scenario directions, Undo,
+        baseline copy, mill circuit, dispatch, twin/engine contract); <code>tools/measure_scenarios.py</code> and
+        <code>tools/validate.py</code> reproduce every number here; <code>make smoke</code> checks the running stack.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Kyzyl-Tas · data and assumptions</span><span>10</span></div>
+</section>
+
+</body>
+</html>

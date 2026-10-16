@@ -9,14 +9,17 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-COMPOSE=(docker compose -f "$ROOT/deploy/compose/docker-compose.yml")
+COMPOSE=(docker compose -f "$ROOT/deploy/compose/docker-compose.yml" -f "$ROOT/deploy/compose/mine.yml")
 # shellcheck disable=SC1091
 set -a; . "$ROOT/deploy/compose/.env"; set +a
 
+: "${MINE_UI_PORT:=8000}"
 HOST=127.0.0.1
 DITTO="http://$HOST:$DITTO_PORT"
 GRAFANA="http://$HOST:$GRAFANA_PORT"
+MINE_UI="http://$HOST:$MINE_UI_PORT"
 THING="org.openegiz:smoke-test-$$"
+MINE_NS="kz.kyzyltas.mine"
 FAILED=0
 
 pass() { printf '  \033[32mok\033[0m    %s\n' "$1"; }
@@ -135,8 +138,9 @@ echo "Extended API and Unity"
 check "extended API answers" sh -c "curl -s -o /dev/null -w '%{http_code}' http://$HOST:$EXTENDED_API_PORT/ | grep -qE '^[2-4][0-9][0-9]$'"
 check "Unity file server serves build/" curl -sf -o /dev/null "http://$HOST:$UNITY_PORT/build/README.md"
 
-if "${COMPOSE[@]}" ps -a --format '{{.Service}}' 2>/dev/null | grep -qx mine-setup || \
-   docker ps -a --format '{{.Names}}' | grep -q '^openegiz-mine-simulator-'; then
+# Our own mine also has a service named mine-setup, so detect the reference
+# Example Mine by its own simulator container instead.
+if docker ps -a --format '{{.Names}}' | grep -q '^openegiz-mine-simulator-'; then
   echo "Example Mine"
   for twin in mine-01 excavator-01 truck-01 truck-02 crusher-01; do
     check_ditto "twin org.openegiz.mine:$twin exists" curl -sf -u "ditto:$DITTO_PASSWORD" "$DITTO/api/2/things/org.openegiz.mine:$twin"
@@ -153,6 +157,23 @@ if "${COMPOSE[@]}" ps -a --format '{{.Service}}' 2>/dev/null | grep -qx mine-set
   check_ditto "Twins UI lists the Example Mine twins" sh -c "curl -sf -u admin:$GRAFANA_ADMIN_PASSWORD '$PROXY/ditto/api/2/search/things?filter=ne(attributes/_isType,true)&fields=thingId&option=size(200)' | grep -q 'org.openegiz.mine:truck-01'"
   check "dashboard provisioned" curl -sf -u "admin:$GRAFANA_ADMIN_PASSWORD" "$GRAFANA/api/dashboards/uid/openegiz-example-mine"
 fi
+
+echo "Kyzyl-Tas Mine (our submission)"
+check_ditto "mine twins exist ($MINE_NS)" sh -c \
+  "curl -sf -u ditto:$DITTO_PASSWORD '$DITTO/api/2/search/things?namespaces=$MINE_NS&option=size(1)' | grep -q '\"items\"'"
+check_ditto "scenario control twin exists" curl -sf -u "ditto:$DITTO_PASSWORD" "$DITTO/api/2/things/$MINE_NS:scenario"
+ok=0
+# One row for all mine series (group before count), and grep reads the whole
+# output: with `grep -q` the query would die of SIGPIPE under pipefail.
+mine_flux="from(bucket:\"default\") |> range(start:-2m) |> filter(fn:(r) => r.thingId =~ /^${MINE_NS//./\\.}:/) |> group() |> count()"
+for _ in $(seq 1 60); do
+  if "${COMPOSE[@]}" exec -T influxdb influx query --org opentwins --token "$INFLUXDB_TOKEN" --raw "$mine_flux" 2>/dev/null \
+      | grep -E ',[1-9][0-9]*[[:space:]]*$' >/dev/null; then ok=1; break; fi
+  sleep 2
+done
+if [ $ok = 1 ]; then pass "mine-engine telemetry reaches InfluxDB"; else fail "no mine telemetry in InfluxDB for the last 2 minutes"; fi
+check "mine UI serves the app" curl -sf -o /dev/null "$MINE_UI/"
+check "mine UI proxy reaches Ditto" sh -c "curl -sf '$MINE_UI/ditto/api/2/search/things?namespaces=$MINE_NS&option=size(1)' | grep -q '\"items\"'"
 
 echo
 if [ $FAILED = 0 ]; then echo "Smoke test passed."; else echo "Smoke test FAILED."; exit 1; fi

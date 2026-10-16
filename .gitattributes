@@ -1,0 +1,38 @@
+# Line endings: on a Windows
+# checkout; without this file every *.sh here is CRLF, which breaks scripts
+# bind-mounted into Linux containers (e.g. ditto/40-htpasswd.sh must run as a
+# container entrypoint script with Unix line endings and the executable bit).
+* text=auto eol=lf
+
+*.sh text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.conf text eol=lf
+*.template text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+Makefile text eol=lf
+Dockerfile text eol=lf
+
+# Binaries: never touch
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.svg text eol=lf
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.glb binary
+*.gltf binary
+*.wasm binary
+*.data binary
+*.pdf binary
+*.zip binary
+
+# Upstream files committed with CRLF in the OpenEgiz template: leave them
+# byte-for-byte as upstream has them (not ours to reformat).
+charts/hono/charts/kafka/templates/broker/config-secrets.yaml -text
+charts/hono/charts/kafka/templates/controller-eligible/config-secrets.yaml -text
+examples/ar-lamp/lampa.html -text
+examples/ar-lamp/local/lampa.html -text
+LICENSES/Apache-2.0.txt -text
